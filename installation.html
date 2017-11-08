@@ -209,6 +209,10 @@ Anaconda might not work on your cluster so uninstall it and reinstall with
 implementation.</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ conda uninstall mpi4py
 $ pip install mpi4py
+
+<span class="c1"># Also make sure that there is no hdf5 or h5py in the current conda</span>
+<span class="c1"># environment!</span>
+$ conda uninstall h5py hdf5
 </pre></div>
 </div>
 <p>Keep in mind that <code class="docutils literal"><span class="pre">h5py</span></code> must be compiled with parallel I/O support and that
