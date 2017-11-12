@@ -331,6 +331,15 @@ ability to approximate the size of all stored stream objects.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="pyasdf.utils.WaveformAccessor.get_waveform_attributes">
+<code class="descname">get_waveform_attributes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyasdf/utils.html#WaveformAccessor.get_waveform_attributes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyasdf.utils.WaveformAccessor.get_waveform_attributes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a dictionary of the attributes of all waveform data sets.</p>
+<p>This works purely on the meta data level and is thus fast. Event,
+origin, arrival, and focmec ids will be returned as lists as they can
+be set multiple times per data-set.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="pyasdf.utils.WaveformAccessor.get_waveform_tags">
 <code class="descname">get_waveform_tags</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyasdf/utils.html#WaveformAccessor.get_waveform_tags"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyasdf.utils.WaveformAccessor.get_waveform_tags" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get all available waveform tags for this station.</p>

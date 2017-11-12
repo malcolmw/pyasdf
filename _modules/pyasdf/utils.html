@@ -872,6 +872,39 @@
     <span class="k">def</span> <span class="nf">__ne__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="k">return</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__eq__</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
 
+<div class="viewcode-block" id="WaveformAccessor.get_waveform_attributes"><a class="viewcode-back" href="../../utils.html#pyasdf.utils.WaveformAccessor.get_waveform_attributes">[docs]</a>    <span class="k">def</span> <span class="nf">get_waveform_attributes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get a dictionary of the attributes of all waveform data sets.</span>
+
+<span class="sd">        This works purely on the meta data level and is thus fast. Event,</span>
+<span class="sd">        origin, arrival, and focmec ids will be returned as lists as they can</span>
+<span class="sd">        be set multiple times per data-set.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">plural_keys</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;event_id&quot;</span><span class="p">,</span> <span class="s2">&quot;origin_id&quot;</span><span class="p">,</span>
+                       <span class="s2">&quot;magnitude_id&quot;</span><span class="p">,</span> <span class="s2">&quot;focal_mechanism_id&quot;</span><span class="p">]</span>
+
+        <span class="n">attributes</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">_i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">_i</span> <span class="o">==</span> <span class="s2">&quot;StationXML&quot;</span><span class="p">:</span>
+                <span class="k">continue</span>
+
+            <span class="n">attrs</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__hdf5_group</span><span class="p">[</span><span class="n">_i</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="c1"># Make sure its an actual string.</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">v</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+                <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+                    <span class="k">pass</span>
+
+                <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">plural_keys</span><span class="p">:</span>
+                    <span class="n">k</span> <span class="o">+=</span> <span class="s2">&quot;s&quot;</span>
+                    <span class="n">v</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+                <span class="n">attrs</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
+            <span class="k">if</span> <span class="n">attrs</span><span class="p">:</span>
+                <span class="n">attributes</span><span class="p">[</span><span class="n">_i</span><span class="p">]</span> <span class="o">=</span> <span class="n">attrs</span>
+
+        <span class="k">return</span> <span class="n">attributes</span></div>
+
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">coordinates</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
