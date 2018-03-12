@@ -169,16 +169,16 @@ depends on the specific application. Very large files might be a bit easier to
 work with (less bookkeeping) but are harder to move around, backup, and more
 prone to corruption through bit rot.</p>
 <p>We start with a folder full of MiniSEED files, one per day.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ du -sh EHZ.D
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ du -sh EHZ.D
 <span class="m">7</span>.3G    EHZ.D
 
 $ ls EHZ.D <span class="p">|</span> wc -l
 <span class="m">365</span>
 </pre></div>
 </div>
-<p>A simple script writes everything into a single ASDF file. <a class="reference external" href="https://pypi.python.org/pypi/tqdm">tqdm</a> (install with <code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">tqdm</span></code>) is a
+<p>A simple script writes everything into a single ASDF file. <a class="reference external" href="https://pypi.python.org/pypi/tqdm">tqdm</a> (install with <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">tqdm</span></code>) is a
 very simple way to add a progress bar to a loop. Feel free to leave it out.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>import glob
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>import glob
 from tqdm import tqdm
 from pyasdf import ASDFDataSet
 
@@ -189,18 +189,18 @@ from pyasdf import ASDFDataSet
 </pre></div>
 </div>
 <p>Note that this script uses the
-<a class="reference internal" href="asdf_data_set.html#pyasdf.asdf_data_set.ASDFDataSet.append_waveforms" title="pyasdf.asdf_data_set.ASDFDataSet.append_waveforms"><code class="xref py py-meth docutils literal"><span class="pre">append_waveforms()</span></code></a> method. This will,
+<a class="reference internal" href="asdf_data_set.html#pyasdf.asdf_data_set.ASDFDataSet.append_waveforms" title="pyasdf.asdf_data_set.ASDFDataSet.append_waveforms"><code class="xref py py-meth docutils literal notranslate"><span class="pre">append_waveforms()</span></code></a> method. This will,
 assuming two files are exactly adjacent (last sample of first file and first
 sample of next file are exactly one delta apart), store both in a single, large
 array which might be advantageous for some access patterns. It can be
 completely replaced by the
-<a class="reference internal" href="asdf_data_set.html#pyasdf.asdf_data_set.ASDFDataSet.add_waveforms" title="pyasdf.asdf_data_set.ASDFDataSet.add_waveforms"><code class="xref py py-meth docutils literal"><span class="pre">add_waveforms()</span></code></a> method which will not
+<a class="reference internal" href="asdf_data_set.html#pyasdf.asdf_data_set.ASDFDataSet.add_waveforms" title="pyasdf.asdf_data_set.ASDFDataSet.add_waveforms"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_waveforms()</span></code></a> method which will not
 do the merging. A case by case choice has to be made to determine which is more
 suitable for any given application.</p>
 <p>Also note that compression can have quite a strong effect but the writing and
 reading speed will naturally decrease. The compression option can be set when
 initializing the ASDF file. Here are some results for this particular data set:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>du -sh *.h5
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>du -sh *.h5
 <span class="m">4</span>.8G    out_gzip3.h5
 23G     out_uncompressed.h5
 </pre></div>
@@ -209,9 +209,9 @@ initializing the ASDF file. Here are some results for this particular data set:<
 uncompressed version is faster to create though (of course this, like all
 benchmarks, depends on a large number of factors).</p>
 <p>The normal access pattern for ASDF breaks a bit here as it would potentially
-load a lot of data into memory at one go. <code class="docutils literal"><span class="pre">pyasdf</span></code> prevents accidental use
+load a lot of data into memory at one go. <code class="docutils literal notranslate"><span class="pre">pyasdf</span></code> prevents accidental use
 when trying to load a full year into memory at once:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ds</span><span class="o">.</span><span class="n">waveforms</span><span class="o">.</span><span class="n">BW_ALTM</span><span class="o">.</span><span class="n">raw_recording</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ds</span><span class="o">.</span><span class="n">waveforms</span><span class="o">.</span><span class="n">BW_ALTM</span><span class="o">.</span><span class="n">raw_recording</span>
 <span class="go">---------------------------------------------------------------------------</span>
 <span class="go">ASDFValueError                            Traceback (most recent call last)</span>
 
@@ -225,7 +225,7 @@ when trying to load a full year into memory at once:</p>
 </div>
 <p>Thus either adjust the setting as suggested, or, much better, use a different
 method to access the data:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ds</span><span class="o">.</span><span class="n">get_waveforms</span><span class="p">(</span><span class="n">network</span><span class="o">=</span><span class="s2">&quot;BW&quot;</span><span class="p">,</span> <span class="n">station</span><span class="o">=</span><span class="s2">&quot;ALTM&quot;</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">channel</span><span class="o">=</span><span class="s2">&quot;EHZ&quot;</span><span class="p">,</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ds</span><span class="o">.</span><span class="n">get_waveforms</span><span class="p">(</span><span class="n">network</span><span class="o">=</span><span class="s2">&quot;BW&quot;</span><span class="p">,</span> <span class="n">station</span><span class="o">=</span><span class="s2">&quot;ALTM&quot;</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">channel</span><span class="o">=</span><span class="s2">&quot;EHZ&quot;</span><span class="p">,</span>
 <span class="go">                     starttime=obspy.UTCDateTime(2015, 3, 11),</span>
 <span class="go">                     endtime=obspy.UTCDateTime(2015, 3, 12), tag=&quot;raw_recording&quot;)</span>
 <span class="go">1 Trace(s) in Stream:</span>
@@ -235,7 +235,7 @@ method to access the data:</p>
 <p>This will only extract sample at exactly the required times making it very
 suitable for very big data arrays.</p>
 <p>Another example of this is to write a simple loop over every hour in the year:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">starttime</span> <span class="o">=</span> <span class="n">obspy</span><span class="o">.</span><span class="n">UTCDateTime</span><span class="p">(</span><span class="mi">2015</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">starttime</span> <span class="o">=</span> <span class="n">obspy</span><span class="o">.</span><span class="n">UTCDateTime</span><span class="p">(</span><span class="mi">2015</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">endtime</span> <span class="o">=</span> <span class="n">obspy</span><span class="o">.</span><span class="n">UTCDateTime</span><span class="p">(</span><span class="mi">2016</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 
 <span class="k">while</span> <span class="n">starttime</span> <span class="o">+</span> <span class="mi">3600</span> <span class="o">&lt;</span> <span class="n">endtime</span><span class="p">:</span>

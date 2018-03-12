@@ -195,7 +195,7 @@ which you can use to get started. <a class="reference external" href="https://ww
 </div>
 <div class="section" id="learning-python-and-obspy">
 <h2><a class="toc-backref" href="#id1">Learning Python and ObsPy</a><a class="headerlink" href="#learning-python-and-obspy" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">pyasdf</span></code> is written in <a class="reference external" href="http://www.python.org">Python</a> and utilizes the
+<p><code class="docutils literal notranslate"><span class="pre">pyasdf</span></code> is written in <a class="reference external" href="http://www.python.org">Python</a> and utilizes the
 data structures of <a class="reference external" href="http://obspy.org">ObsPy</a> to allow the construction of
 modern and efficient workflows. Python is an easy to learn and powerful
 interactive programming language with an exhaustive scientific ecosystem. The
@@ -216,17 +216,17 @@ files with <cite>pyasdf</cite>. For more detailed information, please see the
 demonstrates more complex workflows.</p>
 <div class="admonition-notes-on-using-mpi admonition">
 <p class="first admonition-title">Notes on using MPI</p>
-<p><code class="docutils literal"><span class="pre">pyasdf</span></code> will behave slightly different depending on whether it is being
+<p><code class="docutils literal notranslate"><span class="pre">pyasdf</span></code> will behave slightly different depending on whether it is being
 called with MPI or not. If called with MPI, the underlying HDF5 files
 will be opened with MPI I/O and fully parallel I/O will be utilized for
 the processing functions. Keep the scripts reasonably short if using MPI
 or place appropriate barriers.</p>
-<p>The module will detect if it has been called with MPI if <code class="docutils literal"><span class="pre">mpi4py</span></code> can
+<p>The module will detect if it has been called with MPI if <code class="docutils literal notranslate"><span class="pre">mpi4py</span></code> can
 be imported and the size of the communicator is greater than one. Thus
-calling it with <code class="docutils literal"><span class="pre">mpirun/mpiexec</span></code> with only one core will not be
+calling it with <code class="docutils literal notranslate"><span class="pre">mpirun/mpiexec</span></code> with only one core will not be
 recognized as being called with MPI.</p>
 <p class="last">Due to a limitation of Python you should always delete all references to
-the <a class="reference internal" href="asdf_data_set.html#pyasdf.asdf_data_set.ASDFDataSet" title="pyasdf.asdf_data_set.ASDFDataSet"><code class="xref py py-class docutils literal"><span class="pre">ASDFDataSet</span></code></a> objects at the end.
+the <a class="reference internal" href="asdf_data_set.html#pyasdf.asdf_data_set.ASDFDataSet" title="pyasdf.asdf_data_set.ASDFDataSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">ASDFDataSet</span></code></a> objects at the end.
 Otherwise the program will potentially not finish when called with MPI.
 An even better alternative is described in <a class="reference internal" href="usage_as_context_manager.html"><span class="doc">Usage as a Context Manager</span></a>.</p>
 </div>
@@ -234,10 +234,10 @@ An even better alternative is described in <a class="reference internal" href="u
 <h3><a class="toc-backref" href="#id3">Creating an ASDF data set</a><a class="headerlink" href="#creating-an-asdf-data-set" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="initialization">
 <h4><a class="toc-backref" href="#id4">Initialization</a><a class="headerlink" href="#initialization" title="Permalink to this headline">¶</a></h4>
-<p>The first step is always to import <code class="docutils literal"><span class="pre">pyasdf</span></code> and create a
-<a class="reference internal" href="asdf_data_set.html#pyasdf.asdf_data_set.ASDFDataSet" title="pyasdf.asdf_data_set.ASDFDataSet"><code class="xref py py-class docutils literal"><span class="pre">ASDFDataSet</span></code></a> object. If the file does not
+<p>The first step is always to import <code class="docutils literal notranslate"><span class="pre">pyasdf</span></code> and create a
+<a class="reference internal" href="asdf_data_set.html#pyasdf.asdf_data_set.ASDFDataSet" title="pyasdf.asdf_data_set.ASDFDataSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">ASDFDataSet</span></code></a> object. If the file does not
 exists, it will be created, otherwise the existing one will be opened.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyasdf</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyasdf</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ds</span> <span class="o">=</span> <span class="n">pyasdf</span><span class="o">.</span><span class="n">ASDFDataSet</span><span class="p">(</span><span class="s2">&quot;new_file.h5&quot;</span><span class="p">,</span> <span class="n">compression</span><span class="o">=</span><span class="s2">&quot;gzip-3&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -245,9 +245,9 @@ exists, it will be created, otherwise the existing one will be opened.</p>
 quality as all offered compression options are lossless. Only new data will
 be compressed and compression will be disable for files created with
 parallel I/O as these two features are not compatible. See the documentation
-of the  <a class="reference internal" href="asdf_data_set.html#pyasdf.asdf_data_set.ASDFDataSet" title="pyasdf.asdf_data_set.ASDFDataSet"><code class="xref py py-class docutils literal"><span class="pre">ASDFDataSet</span></code></a> object for more details.</p>
+of the  <a class="reference internal" href="asdf_data_set.html#pyasdf.asdf_data_set.ASDFDataSet" title="pyasdf.asdf_data_set.ASDFDataSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">ASDFDataSet</span></code></a> object for more details.</p>
 <p>At any point you can get an overview of the contents by printing the object</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">ds</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">ds</span><span class="p">)</span>
 <span class="go">ASDF file [format version: 1.0.0]: &#39;new_file.h5&#39; (7.7 KB)</span>
 <span class="go">Contains 0 event(s)</span>
 <span class="go">Contains waveform data from 0 station(s).</span>
@@ -257,21 +257,21 @@ of the  <a class="reference internal" href="asdf_data_set.html#pyasdf.asdf_data_
 <div class="section" id="adding-information-about-an-earthquake">
 <h4><a class="toc-backref" href="#id5">Adding Information about an Earthquake</a><a class="headerlink" href="#adding-information-about-an-earthquake" title="Permalink to this headline">¶</a></h4>
 <p>ASDF can optionally store events and associate waveforms with a given event.
-To add an event with <code class="docutils literal"><span class="pre">pyasdf</span></code> use the
-<a class="reference internal" href="asdf_data_set.html#pyasdf.asdf_data_set.ASDFDataSet.add_quakeml" title="pyasdf.asdf_data_set.ASDFDataSet.add_quakeml"><code class="xref py py-meth docutils literal"><span class="pre">add_quakeml()</span></code></a> method. Be aware that
+To add an event with <code class="docutils literal notranslate"><span class="pre">pyasdf</span></code> use the
+<a class="reference internal" href="asdf_data_set.html#pyasdf.asdf_data_set.ASDFDataSet.add_quakeml" title="pyasdf.asdf_data_set.ASDFDataSet.add_quakeml"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_quakeml()</span></code></a> method. Be aware that
 all operations will directly write to the file without an explicit
-<em>save/write</em> step. This enables <code class="docutils literal"><span class="pre">pyasdf</span></code> to deal with arbitrarily big data
+<em>save/write</em> step. This enables <code class="docutils literal notranslate"><span class="pre">pyasdf</span></code> to deal with arbitrarily big data
 sets.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ds</span><span class="o">.</span><span class="n">add_quakeml</span><span class="p">(</span><span class="s2">&quot;/path/to/quake.xml&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ds</span><span class="o">.</span><span class="n">add_quakeml</span><span class="p">(</span><span class="s2">&quot;/path/to/quake.xml&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">ds</span><span class="p">)</span>
 <span class="go">ASDF file [format version: 1.0.0]: &#39;new_file.h5&#39; (14.7 KB)</span>
 <span class="go">Contains 1 event(s)</span>
 <span class="go">Contains waveform data from 0 station(s).</span>
 </pre></div>
 </div>
-<p>The event can later be accessed again by using the <code class="docutils literal"><span class="pre">event</span></code> attribute.
+<p>The event can later be accessed again by using the <code class="docutils literal notranslate"><span class="pre">event</span></code> attribute.
 Please be careful that this might contain multiple events and not only one.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">event</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">events</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">event</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">events</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -279,7 +279,7 @@ Please be careful that this might contain multiple events and not only one.</p>
 <h4><a class="toc-backref" href="#id6">Adding Waveforms</a><a class="headerlink" href="#adding-waveforms" title="Permalink to this headline">¶</a></h4>
 <p>The next step is to add waveform data. In this example we will add all SAC
 files in one folder with the help of the
-<a class="reference internal" href="asdf_data_set.html#pyasdf.asdf_data_set.ASDFDataSet.add_waveforms" title="pyasdf.asdf_data_set.ASDFDataSet.add_waveforms"><code class="xref py py-meth docutils literal"><span class="pre">add_waveforms()</span></code></a> method.
+<a class="reference internal" href="asdf_data_set.html#pyasdf.asdf_data_set.ASDFDataSet.add_waveforms" title="pyasdf.asdf_data_set.ASDFDataSet.add_waveforms"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_waveforms()</span></code></a> method.
 Printing the progress is unnecessary but useful when dealing with large
 amounts of data. There are a couple of subtleties to keep in mind here:</p>
 <ul class="simple">
@@ -287,16 +287,16 @@ amounts of data. There are a couple of subtleties to keep in mind here:</p>
 initialization of the data set object.</li>
 <li>It is possible to optionally associate waveforms with a specific event.</li>
 <li>You must give a tag. The tag is an additional identifier of that particular
-waveform. The <code class="docutils literal"><span class="pre">&quot;raw_recording&quot;</span></code> tag is by convention only given to raw,
+waveform. The <code class="docutils literal notranslate"><span class="pre">&quot;raw_recording&quot;</span></code> tag is by convention only given to raw,
 unprocessed data.</li>
 <li>The actual type of the data will not change. This example uses SAC which
 means data is in single precision floating point, MiniSEED will typically
 be in single precision integer if coming from a data center. If you desire
 a different data type to be stored for whatever reason you have to
-manually convert it and pass the ObsPy <a class="reference external" href="http://docs.obspy.org/packages/autogen/obspy.core.stream.Stream.html#obspy.core.stream.Stream" title="(in ObsPy Documentation (1.1.0) v1.1)"><code class="xref py py-class docutils literal"><span class="pre">Stream</span></code></a>
+manually convert it and pass the ObsPy <a class="reference external" href="http://docs.obspy.org/packages/autogen/obspy.core.stream.Stream.html#obspy.core.stream.Stream" title="(in ObsPy Documentation (1.1.0) v1.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Stream</span></code></a>
 object.</li>
 </ul>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">glob</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">glob</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">files</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;/path/to/data/*.mseed&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">_i</span><span class="p">,</span> <span class="n">filename</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">files</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Adding file </span><span class="si">%i</span><span class="s2"> of </span><span class="si">%i</span><span class="s2"> ...&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">_i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">files</span><span class="p">)))</span>
@@ -320,10 +320,10 @@ which is fairly straightforward.</p>
 StationXML files to fit within the structure imposed by the ASDF format.
 StationXML can store any number and combination of networks, stations,
 and channels whereas ASDF requires a <strong>separate StationXML file per
-station</strong>. <code class="docutils literal"><span class="pre">pyasdf</span></code> will thus split up files if necessary and also
+station</strong>. <code class="docutils literal notranslate"><span class="pre">pyasdf</span></code> will thus split up files if necessary and also
 merge them with any possibly already existing StationXML files.</p>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">files</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;/path/to/stations/*.xml&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">files</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;/path/to/stations/*.xml&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">_i</span><span class="p">,</span> <span class="n">filename</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">files</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Adding file </span><span class="si">%i</span><span class="s2"> of </span><span class="si">%i</span><span class="s2"> ...&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">_i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">files</span><span class="p">)))</span>
 <span class="gp">... </span>    <span class="n">ds</span><span class="o">.</span><span class="n">add_stationxml</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
@@ -342,7 +342,7 @@ merge them with any possibly already existing StationXML files.</p>
 <em>auxiliary data</em>. Auxiliary data are data arrays with associcated
 attributes that can represent anything; each sub-community is supposed to come
 up with conventions of how to use this.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
 <span class="go"># The type always should be camel case.</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">data_type</span> <span class="o">=</span> <span class="s2">&quot;RandomArrays&quot;</span>
@@ -372,16 +372,16 @@ completion in interactive environments is available). At access time the
 data is read from an ASDF file an parsed to an ObsPy object.</p>
 <p>As always, the first step is to open a file. Note that this does not yet
 read any data.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyasdf</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyasdf</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ds</span> <span class="o">=</span> <span class="n">pyasdf</span><span class="o">.</span><span class="n">ASDFDataSet</span><span class="p">(</span><span class="s2">&quot;example.h5&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="section" id="reading-events">
 <h4><a class="toc-backref" href="#id10">Reading Events</a><a class="headerlink" href="#reading-events" title="Permalink to this headline">¶</a></h4>
-<p>To read event data, simply access the <code class="docutils literal"><span class="pre">event</span></code> attribute. At access time the
-events will be parsed to an <a class="reference external" href="http://docs.obspy.org/packages/autogen/obspy.core.event.Catalog.html#obspy.core.event.Catalog" title="(in ObsPy Documentation (1.1.0) v1.1)"><code class="xref py py-class docutils literal"><span class="pre">obspy.core.event.Catalog</span></code></a> object which can
+<p>To read event data, simply access the <code class="docutils literal notranslate"><span class="pre">event</span></code> attribute. At access time the
+events will be parsed to an <a class="reference external" href="http://docs.obspy.org/packages/autogen/obspy.core.event.Catalog.html#obspy.core.event.Catalog" title="(in ObsPy Documentation (1.1.0) v1.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">obspy.core.event.Catalog</span></code></a> object which can
 used for further analysis.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">events</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">events</span><span class="p">)</span>
 <span class="go">obspy.core.event.Catalog</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">events</span><span class="p">)</span>
 <span class="go">4 Event(s) in Catalog:</span>
@@ -395,14 +395,14 @@ used for further analysis.</p>
 <div class="section" id="reading-waveforms-and-stationxml">
 <h4><a class="toc-backref" href="#id11">Reading Waveforms and StationXML</a><a class="headerlink" href="#reading-waveforms-and-stationxml" title="Permalink to this headline">¶</a></h4>
 <p>Waveforms and station meta information can be accessed at a per-station
-granularity under the <code class="docutils literal"><span class="pre">waveforms</span></code> attribute. <strong>Note that tab completion
+granularity under the <code class="docutils literal notranslate"><span class="pre">waveforms</span></code> attribute. <strong>Note that tab completion
 works everywhere so please play around in the IPython shell which is the
 best way to learn how to use pyasdf.</strong></p>
-<p>In the following we will access the data for the <code class="docutils literal"><span class="pre">IU.ANMO</span></code> station. Note
+<p>In the following we will access the data for the <code class="docutils literal notranslate"><span class="pre">IU.ANMO</span></code> station. Note
 that the dot is replaced by an underscore to work around syntax limitations
 imposed by Python. Once again, at attribute access everything is read from
 the ASDF file and parsed to an ObsPy object.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">waveforms</span><span class="o">.</span><span class="n">IU_ANMO</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">waveforms</span><span class="o">.</span><span class="n">IU_ANMO</span><span class="p">)</span>
 <span class="go">Contents of the data set for station IU.ANMO:</span>
 <span class="go">    - Has a StationXML file</span>
 <span class="go">    - 2 Waveform Tag(s):</span>
@@ -436,7 +436,7 @@ the ASDF file and parsed to an ObsPy object.</p>
 </div>
 <p>Now attribute access is convenient for interactive use, but not that much for
 programmatic access. A number of better ways are available for that case:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ds</span><span class="o">.</span><span class="n">waveforms</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ds</span><span class="o">.</span><span class="n">waveforms</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
 <span class="go">[&#39;IU.ADK&#39;, &#39;IU.AFI&#39;, &#39;IU.ANMO&#39;, &#39;IU.ANTO&#39;, &#39;IU.BBSR&#39;]</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">waveforms</span><span class="p">[</span><span class="s2">&quot;IU.ANMO&quot;</span><span class="p">])</span>
@@ -458,14 +458,14 @@ programmatic access. A number of better ways are available for that case:</p>
 </div>
 <p>The object returned for each station is just a helper object easing the
 access to the waveform and station data.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sta</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">waveforms</span><span class="p">[</span><span class="s2">&quot;IU.ANMO&quot;</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sta</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">waveforms</span><span class="p">[</span><span class="s2">&quot;IU.ANMO&quot;</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">sta</span><span class="p">)</span>
 <span class="go">pyasdf.utils.WaveformAccessor</span>
 </pre></div>
 </div>
 <p>ASDF distinguishes waveforms by tags. All waveforms belonging to a certain
 tag can be accessed with either attribute or key access.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">sta</span><span class="o">.</span><span class="n">synthetic</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">sta</span><span class="o">.</span><span class="n">synthetic</span><span class="p">)</span>
 <span class="go">3 Trace(s) in Stream:</span>
 <span class="go">IU.ANMO.S3.MXE | 1998-09-01T10:29:52.250000Z - 1998-09-01T12:10:19.857558Z | 7.0 Hz, 42300 samples</span>
 <span class="go">IU.ANMO.S3.MXN | 1998-09-01T10:29:52.250000Z - 1998-09-01T12:10:19.857558Z | 7.0 Hz, 42300 samples</span>
@@ -475,13 +475,13 @@ tag can be accessed with either attribute or key access.</p>
 </pre></div>
 </div>
 <p>Get a list of all tags for a certain station:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sta</span><span class="o">.</span><span class="n">get_waveform_tags</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sta</span><span class="o">.</span><span class="n">get_waveform_tags</span><span class="p">()</span>
 <span class="go">[&#39;observed_processed&#39;, &#39;synthetic&#39;]</span>
 </pre></div>
 </div>
 <p>Sometimes more granular access is required. To that end one can also access
 waveforms at the individual trace level.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sta</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sta</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
 <span class="go">[&#39;IU.ANMO..BHZ__1998-09-01T10:24:49__1998-09-01T12:09:48__observed_processed&#39;,</span>
 <span class="go"> &#39;IU.ANMO.S3.MXE__1998-09-01T10:29:52__1998-09-01T12:10:19__synthetic&#39;,</span>
 <span class="go"> &#39;IU.ANMO.S3.MXN__1998-09-01T10:29:52__1998-09-01T12:10:19__synthetic&#39;,</span>
@@ -494,7 +494,7 @@ waveforms at the individual trace level.</p>
 </div>
 <p>The advantage of the ASDF format is that it is also able to store relations
 so it can for example tell what event a certain waveform is associated with:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cat</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">events</span>  <span class="c1"># The events have to be in memory for the reference to work.</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cat</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">events</span>  <span class="c1"># The events have to be in memory for the reference to work.</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">sta</span><span class="o">.</span><span class="n">synthetic</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">asdf</span><span class="o">.</span><span class="n">event_ids</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_referred_object</span><span class="p">())</span>
 <span class="go">Event:      1998-09-01T10:29:54.500000Z | -58.500,  -26.100 | 5.5 Mwc</span>
 
@@ -509,7 +509,7 @@ so it can for example tell what event a certain waveform is associated with:</p>
 </div>
 <p>Additionally it can also store the provenance associated with a certain
 waveform trace:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prov_id</span> <span class="o">=</span> <span class="n">sta</span><span class="o">.</span><span class="n">synthetic</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">asdf</span><span class="o">.</span><span class="n">provenance_id</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prov_id</span> <span class="o">=</span> <span class="n">sta</span><span class="o">.</span><span class="n">synthetic</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">asdf</span><span class="o">.</span><span class="n">provenance_id</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ds</span><span class="o">.</span><span class="n">provenance</span><span class="o">.</span><span class="n">get_provenance_document_for_id</span><span class="p">(</span><span class="n">prov_id</span><span class="p">)</span>
 <span class="go">{&#39;document&#39;: &lt;ProvDocument&gt;, &#39;name&#39;: &#39;373da5fe_d424_4f44_9bca_4334d77ed10b&#39;}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ds</span><span class="o">.</span><span class="n">provenance</span><span class="o">.</span><span class="n">get_provenance_document_for_id</span><span class="p">(</span><span class="n">prov_id</span><span class="p">)[</span><span class="s2">&quot;document&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
@@ -1062,8 +1062,8 @@ waveform trace:</p>
 <div class="section" id="reading-auxiliary-data">
 <h4><a class="toc-backref" href="#id12">Reading Auxiliary Data</a><a class="headerlink" href="#reading-auxiliary-data" title="Permalink to this headline">¶</a></h4>
 <p>ASDF can additionally also store non-waveform data. Access is via the
-<code class="docutils literal"><span class="pre">auxiliary_data</span></code> attribute. Once again, dictionary access is possible.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">auxiliary_data</span><span class="p">)</span>
+<code class="docutils literal notranslate"><span class="pre">auxiliary_data</span></code> attribute. Once again, dictionary access is possible.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">auxiliary_data</span><span class="p">)</span>
 <span class="go">Data set contains the following auxiliary data types:</span>
 <span class="go">    AdjointSource (12 item(s))</span>
 <span class="go">    File (1 item(s))</span>
@@ -1092,7 +1092,7 @@ waveform trace:</p>
 </pre></div>
 </div>
 <p>Accessing a single item once again by attribute or key access.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ds</span><span class="o">.</span><span class="n">auxiliary_data</span><span class="o">.</span><span class="n">AdjointSource</span><span class="o">.</span><span class="n">BW_ALFO_EHE</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ds</span><span class="o">.</span><span class="n">auxiliary_data</span><span class="o">.</span><span class="n">AdjointSource</span><span class="o">.</span><span class="n">BW_ALFO_EHE</span>
 <span class="go">Auxiliary Data of Type &#39;AdjointSource&#39;</span>
 <span class="go">    Path &#39;BW_ALFO_EHE&#39;</span>
 <span class="go">    Provenance ID: &#39;{http://seisprov.org/seis_prov/0.1/#}sp012_as_cd84e87&#39;</span>

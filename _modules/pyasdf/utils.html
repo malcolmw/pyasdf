@@ -208,8 +208,8 @@
         <span class="n">multiprocessing</span> <span class="o">=</span> <span class="n">dummy</span>
         <span class="n">multiprocessing</span><span class="o">.</span><span class="n">cpu_count</span> <span class="o">=</span> <span class="n">mp</span><span class="o">.</span><span class="n">cpu_count</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="kn">import</span> <span class="nn">multiprocessing</span>  <span class="c1"># NOQA</span>
-    <span class="k">return</span> <span class="n">multiprocessing</span></div>
+        <span class="kn">import</span> <span class="nn">multiprocessing</span>  <span class="c1"># NOQA</span></div>
+    <span class="k">return</span> <span class="n">multiprocessing</span>
 
 
 <div class="viewcode-block" id="is_multiprocessing_problematic"><a class="viewcode-back" href="../../utils.html#pyasdf.utils.is_multiprocessing_problematic">[docs]</a><span class="k">def</span> <span class="nf">is_multiprocessing_problematic</span><span class="p">():</span>  <span class="c1"># pragma: no cover</span>
@@ -230,8 +230,8 @@
     <span class="k">elif</span> <span class="s2">&quot;openblas&quot;</span> <span class="ow">in</span> <span class="n">config_info</span><span class="p">:</span>
         <span class="c1"># Most openBLAS can only operate with one thread...</span>
         <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;OPENBLAS_NUM_THREADS&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;1&quot;</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="kc">False</span></div>
+    <span class="k">else</span><span class="p">:</span></div>
+        <span class="k">return</span> <span class="kc">False</span>
 
 
 <div class="viewcode-block" id="sizeof_fmt"><a class="viewcode-back" href="../../utils.html#pyasdf.utils.sizeof_fmt">[docs]</a><span class="k">def</span> <span class="nf">sizeof_fmt</span><span class="p">(</span><span class="n">num</span><span class="p">):</span>
@@ -243,8 +243,8 @@
     <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;bytes&quot;</span><span class="p">,</span> <span class="s2">&quot;KB&quot;</span><span class="p">,</span> <span class="s2">&quot;MB&quot;</span><span class="p">,</span> <span class="s2">&quot;GB&quot;</span><span class="p">]:</span>
         <span class="k">if</span> <span class="n">num</span> <span class="o">&lt;</span> <span class="mf">1024.0</span> <span class="ow">and</span> <span class="n">num</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mf">1024.0</span><span class="p">:</span>
             <span class="k">return</span> <span class="s2">&quot;</span><span class="si">%3.1f</span><span class="s2"> </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
-        <span class="n">num</span> <span class="o">/=</span> <span class="mf">1024.0</span>
-    <span class="k">return</span> <span class="s2">&quot;</span><span class="si">%3.1f</span><span class="s2"> </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="s2">&quot;TB&quot;</span><span class="p">)</span></div>
+        <span class="n">num</span> <span class="o">/=</span> <span class="mf">1024.0</span></div>
+    <span class="k">return</span> <span class="s2">&quot;</span><span class="si">%3.1f</span><span class="s2"> </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="s2">&quot;TB&quot;</span><span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">_read_string_array</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
@@ -287,8 +287,8 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">_check_size_limit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span><span class="p">)</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_limit</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span><span class="o">.</span><span class="n">popitem</span><span class="p">(</span><span class="n">last</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
+        <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span><span class="p">)</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_limit</span><span class="p">:</span></div>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span><span class="o">.</span><span class="n">popitem</span><span class="p">(</span><span class="n">last</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="ProvenanceAccessor"><a class="viewcode-back" href="../../utils.html#pyasdf.utils.ProvenanceAccessor">[docs]</a><span class="k">class</span> <span class="nc">ProvenanceAccessor</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -348,8 +348,8 @@
 <div class="viewcode-block" id="ProvenanceAccessor.list"><a class="viewcode-back" href="../../utils.html#pyasdf.utils.ProvenanceAccessor.list">[docs]</a>    <span class="k">def</span> <span class="nf">list</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Return a list of available provenance documents.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="nb">sorted</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">__data_set</span><span class="p">()</span><span class="o">.</span><span class="n">_provenance_group</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span></div>
+<span class="sd">        &quot;&quot;&quot;</span></div>
+        <span class="k">return</span> <span class="nb">sorted</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">__data_set</span><span class="p">()</span><span class="o">.</span><span class="n">_provenance_group</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
 
 <div class="viewcode-block" id="ProvenanceAccessor.get_provenance_document_for_id"><a class="viewcode-back" href="../../utils.html#pyasdf.utils.ProvenanceAccessor.get_provenance_document_for_id">[docs]</a>    <span class="k">def</span> <span class="nf">get_provenance_document_for_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">provenance_id</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -368,8 +368,8 @@
             <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">all_ids</span><span class="p">:</span>
                 <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">key</span><span class="p">,</span> <span class="s2">&quot;document&quot;</span><span class="p">:</span> <span class="n">document</span><span class="p">}</span>
         <span class="k">raise</span> <span class="n">ASDFValueError</span><span class="p">(</span>
-            <span class="s2">&quot;Document containing id &#39;</span><span class="si">%s</span><span class="s2">&#39; not found in the data set.&quot;</span>
-            <span class="o">%</span> <span class="n">provenance_id</span><span class="p">)</span></div>
+            <span class="s2">&quot;Document containing id &#39;</span><span class="si">%s</span><span class="s2">&#39; not found in the data set.&quot;</span></div>
+            <span class="o">%</span> <span class="n">provenance_id</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="p">())</span>
@@ -396,8 +396,8 @@
             <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span> <span class="s2">&quot;</span><span class="se">\n\t</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="p">()))</span>
         <span class="k">return</span> <span class="n">ret_str</span>
 
-    <span class="k">def</span> <span class="nf">_repr_pretty_</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">cycle</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="n">p</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="fm">__str__</span><span class="p">())</span></div>
+    <span class="k">def</span> <span class="nf">_repr_pretty_</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">cycle</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span></div>
+        <span class="n">p</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="fm">__str__</span><span class="p">())</span>
 
 
 <span class="k">class</span> <span class="nc">AuxiliaryDataContainer</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -606,8 +606,8 @@
 
         <span class="k">return</span> <span class="n">ret_str</span>
 
-    <span class="k">def</span> <span class="nf">_repr_pretty_</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">cycle</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="n">p</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="fm">__str__</span><span class="p">())</span></div>
+    <span class="k">def</span> <span class="nf">_repr_pretty_</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">cycle</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span></div>
+        <span class="n">p</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="fm">__str__</span><span class="p">())</span>
 
 
 <div class="viewcode-block" id="AuxiliaryDataGroupAccessor"><a class="viewcode-back" href="../../utils.html#pyasdf.utils.AuxiliaryDataGroupAccessor">[docs]</a><span class="k">class</span> <span class="nc">AuxiliaryDataGroupAccessor</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -677,8 +677,8 @@
             <span class="p">)</span>
         <span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_repr_pretty_</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">cycle</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="n">p</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="fm">__str__</span><span class="p">())</span></div>
+    <span class="k">def</span> <span class="nf">_repr_pretty_</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">cycle</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span></div>
+        <span class="n">p</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="fm">__str__</span><span class="p">())</span>
 
 
 <div class="viewcode-block" id="StationAccessor"><a class="viewcode-back" href="../../utils.html#pyasdf.utils.StationAccessor">[docs]</a><span class="k">class</span> <span class="nc">StationAccessor</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -740,8 +740,8 @@
         <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="p">())</span>
 
     <span class="k">def</span> <span class="nf">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">_i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="p">():</span>
-            <span class="k">yield</span> <span class="bp">self</span><span class="p">[</span><span class="n">_i</span><span class="p">]</span></div>
+        <span class="k">for</span> <span class="n">_i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="p">():</span></div>
+            <span class="k">yield</span> <span class="bp">self</span><span class="p">[</span><span class="n">_i</span><span class="p">]</span>
 
 
 <div class="viewcode-block" id="WaveformAccessor"><a class="viewcode-back" href="../../utils.html#pyasdf.utils.WaveformAccessor">[docs]</a><span class="k">class</span> <span class="nc">WaveformAccessor</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -902,8 +902,8 @@
                 <span class="n">attrs</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
             <span class="k">if</span> <span class="n">attrs</span><span class="p">:</span>
                 <span class="n">attributes</span><span class="p">[</span><span class="n">_i</span><span class="p">]</span> <span class="o">=</span> <span class="n">attrs</span>
-
-        <span class="k">return</span> <span class="n">attributes</span></div>
+</div>
+        <span class="k">return</span> <span class="n">attributes</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">coordinates</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -960,8 +960,8 @@
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get all available waveform tags for this station.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">_i</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;__&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-                          <span class="k">for</span> <span class="n">_i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="p">()</span> <span class="k">if</span> <span class="n">_i</span> <span class="o">!=</span> <span class="s2">&quot;StationXML&quot;</span><span class="p">))</span></div>
+        <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">_i</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;__&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span></div>
+                          <span class="k">for</span> <span class="n">_i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="p">()</span> <span class="k">if</span> <span class="n">_i</span> <span class="o">!=</span> <span class="s2">&quot;StationXML&quot;</span><span class="p">))</span>
 
     <span class="k">def</span> <span class="nf">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
         <span class="n">contents</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
@@ -1066,8 +1066,8 @@
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get a list of all data sets for this station.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">__data_set</span><span class="p">()</span><span class="o">.</span><span class="n">_waveform_group</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_station_name</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span></div>
+        <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span></div>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__data_set</span><span class="p">()</span><span class="o">.</span><span class="n">_waveform_group</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_station_name</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
 
     <span class="k">def</span> <span class="nf">__dir__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -1107,8 +1107,8 @@
             <span class="n">waveforms</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">        &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">waveform_contents</span><span class="p">)</span>
         <span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_repr_pretty_</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">cycle</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
-        <span class="n">p</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="fm">__str__</span><span class="p">())</span></div>
+    <span class="k">def</span> <span class="nf">_repr_pretty_</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">cycle</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span></div>
+        <span class="n">p</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="fm">__str__</span><span class="p">())</span>
 
 
 <div class="viewcode-block" id="FilteredWaveformAccessor"><a class="viewcode-back" href="../../utils.html#pyasdf.utils.FilteredWaveformAccessor">[docs]</a><span class="k">class</span> <span class="nc">FilteredWaveformAccessor</span><span class="p">(</span><span class="n">WaveformAccessor</span><span class="p">):</span>
@@ -1120,19 +1120,19 @@
                                   <span class="n">asdf_data_set</span><span class="o">=</span><span class="n">asdf_data_set</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_filtered_items</span> <span class="o">=</span> <span class="n">filtered_items</span>
 
-    <span class="k">def</span> <span class="nf">list</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="FilteredWaveformAccessor.list"><a class="viewcode-back" href="../../utils.html#pyasdf.utils.FilteredWaveformAccessor.list">[docs]</a>    <span class="k">def</span> <span class="nf">list</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="c1"># Get all keys and accept only the filtered items and the station</span>
         <span class="c1"># information. This makes sure the filtered waveforms are somewhat</span>
         <span class="c1"># up-to-date.</span>
         <span class="n">items</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_WaveformAccessor__data_set</span><span class="p">()</span><span class="o">.</span><span class="n">_waveform_group</span><span class="p">[</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_station_name</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
 
-        <span class="k">return</span> <span class="p">[</span><span class="n">_i</span> <span class="k">for</span> <span class="n">_i</span> <span class="ow">in</span> <span class="n">items</span> <span class="k">if</span> <span class="n">_i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_filtered_items</span> <span class="ow">or</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">_i</span> <span class="k">for</span> <span class="n">_i</span> <span class="ow">in</span> <span class="n">items</span> <span class="k">if</span> <span class="n">_i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_filtered_items</span> <span class="ow">or</span></div>
                 <span class="n">_i</span> <span class="o">==</span> <span class="s2">&quot;StationXML&quot;</span><span class="p">]</span>
 
     <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">content</span> <span class="o">=</span> <span class="n">WaveformAccessor</span><span class="o">.</span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;^Contents&quot;</span><span class="p">,</span> <span class="s2">&quot;Filtered contents&quot;</span><span class="p">,</span> <span class="n">content</span><span class="p">)</span></div>
+        <span class="n">content</span> <span class="o">=</span> <span class="n">WaveformAccessor</span><span class="o">.</span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;^Contents&quot;</span><span class="p">,</span> <span class="s2">&quot;Filtered contents&quot;</span><span class="p">,</span> <span class="n">content</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="is_mpi_env"><a class="viewcode-back" href="../../utils.html#pyasdf.utils.is_mpi_env">[docs]</a><span class="k">def</span> <span class="nf">is_mpi_env</span><span class="p">():</span>
@@ -1150,8 +1150,8 @@
         <span class="k">return</span> <span class="kc">False</span>
 
     <span class="k">if</span> <span class="n">mpi4py</span><span class="o">.</span><span class="n">MPI</span><span class="o">.</span><span class="n">COMM_WORLD</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">mpi4py</span><span class="o">.</span><span class="n">MPI</span><span class="o">.</span><span class="n">COMM_WORLD</span><span class="o">.</span><span class="n">rank</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">return</span> <span class="kc">False</span>
-    <span class="k">return</span> <span class="kc">True</span></div>
+        <span class="k">return</span> <span class="kc">False</span></div>
+    <span class="k">return</span> <span class="kc">True</span>
 
 
 <div class="viewcode-block" id="StreamBuffer"><a class="viewcode-back" href="../../utils.html#pyasdf.utils.StreamBuffer">[docs]</a><span class="k">class</span> <span class="nc">StreamBuffer</span><span class="p">(</span><span class="n">collections</span><span class="o">.</span><span class="n">MutableMapping</span><span class="p">):</span>
@@ -1173,7 +1173,7 @@
     <span class="k">def</span> <span class="nf">__delitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
         <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">__streams</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
 
-    <span class="k">def</span> <span class="nf">keys</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="StreamBuffer.keys"><a class="viewcode-back" href="../../utils.html#pyasdf.utils.StreamBuffer.keys">[docs]</a>    <span class="k">def</span> <span class="nf">keys</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></div>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__streams</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -1198,8 +1198,8 @@
                 <span class="n">cum_size</span> <span class="o">+=</span> <span class="n">sys</span><span class="o">.</span><span class="n">getsizeof</span><span class="p">(</span><span class="n">trace</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">)</span>
                 <span class="n">cum_size</span> <span class="o">+=</span> <span class="n">sys</span><span class="o">.</span><span class="n">getsizeof</span><span class="p">(</span><span class="n">trace</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
                 <span class="n">cum_size</span> <span class="o">+=</span> <span class="n">trace</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">nbytes</span>
-        <span class="c1"># Add one percent buffer just in case.</span>
-        <span class="k">return</span> <span class="n">cum_size</span> <span class="o">*</span> <span class="mf">1.01</span></div></div>
+        <span class="c1"># Add one percent buffer just in case.</span></div></div>
+        <span class="k">return</span> <span class="n">cum_size</span> <span class="o">*</span> <span class="mf">1.01</span>
 
 
 <span class="c1"># Two objects describing a job and a worker.</span>
@@ -1240,8 +1240,8 @@
 <div class="viewcode-block" id="JobQueueHelper.poison_pill_received"><a class="viewcode-back" href="../../utils.html#pyasdf.utils.JobQueueHelper.poison_pill_received">[docs]</a>    <span class="k">def</span> <span class="nf">poison_pill_received</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Increment the point pills received counter.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_poison_pills_received</span> <span class="o">+=</span> <span class="mi">1</span></div>
+<span class="sd">        &quot;&quot;&quot;</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_poison_pills_received</span> <span class="o">+=</span> <span class="mi">1</span>
 
 <div class="viewcode-block" id="JobQueueHelper.get_job_for_worker"><a class="viewcode-back" href="../../utils.html#pyasdf.utils.JobQueueHelper.get_job_for_worker">[docs]</a>    <span class="k">def</span> <span class="nf">get_job_for_worker</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">worker_name</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -1250,8 +1250,8 @@
 <span class="sd">        :param worker_name: The name of the worker requesting work.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">job</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_in_queue</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_workers</span><span class="p">[</span><span class="n">worker_name</span><span class="p">]</span><span class="o">.</span><span class="n">active_jobs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">job</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">job</span><span class="o">.</span><span class="n">arguments</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_workers</span><span class="p">[</span><span class="n">worker_name</span><span class="p">]</span><span class="o">.</span><span class="n">active_jobs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">job</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="n">job</span><span class="o">.</span><span class="n">arguments</span>
 
 <div class="viewcode-block" id="JobQueueHelper.received_job_from_worker"><a class="viewcode-back" href="../../utils.html#pyasdf.utils.JobQueueHelper.received_job_from_worker">[docs]</a>    <span class="k">def</span> <span class="nf">received_job_from_worker</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arguments</span><span class="p">,</span> <span class="n">result</span><span class="p">,</span> <span class="n">worker_name</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -1277,8 +1277,8 @@
         <span class="n">job</span><span class="o">.</span><span class="n">result</span> <span class="o">=</span> <span class="n">result</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_workers</span><span class="p">[</span><span class="n">worker_name</span><span class="p">]</span><span class="o">.</span><span class="n">active_jobs</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">job</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_workers</span><span class="p">[</span><span class="n">worker_name</span><span class="p">]</span><span class="o">.</span><span class="n">completed_jobs_count</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_finished_jobs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">job</span><span class="p">)</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_workers</span><span class="p">[</span><span class="n">worker_name</span><span class="p">]</span><span class="o">.</span><span class="n">completed_jobs_count</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_finished_jobs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">job</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">workers</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n\t</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span>
@@ -1306,8 +1306,8 @@
         <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_all_jobs</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_finished_jobs</span><span class="p">)</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">all_poison_pills_received</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_workers</span><span class="p">)</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_poison_pills_received</span></div>
+    <span class="k">def</span> <span class="nf">all_poison_pills_received</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></div>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_workers</span><span class="p">)</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_poison_pills_received</span>
 
 
 <span class="k">def</span> <span class="nf">pretty_sender_log</span><span class="p">(</span><span class="n">rank</span><span class="p">,</span> <span class="n">destination</span><span class="p">,</span> <span class="n">tag</span><span class="p">,</span> <span class="n">payload</span><span class="p">):</span>
@@ -1377,8 +1377,8 @@
     <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
         <span class="k">raise</span> <span class="n">ASDFValueError</span><span class="p">(</span><span class="s2">&quot;Not a valid qualified name.&quot;</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">parsed_url</span><span class="o">.</span><span class="n">scheme</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">parsed_url</span><span class="o">.</span><span class="n">netloc</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="n">ASDFValueError</span><span class="p">(</span><span class="s2">&quot;Not a valid qualified name.&quot;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">url</span><span class="p">,</span> <span class="n">localname</span></div>
+        <span class="k">raise</span> <span class="n">ASDFValueError</span><span class="p">(</span><span class="s2">&quot;Not a valid qualified name.&quot;</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">url</span><span class="p">,</span> <span class="n">localname</span>
 
 
 <div class="viewcode-block" id="get_all_ids_for_prov_document"><a class="viewcode-back" href="../../utils.html#pyasdf.utils.get_all_ids_for_prov_document">[docs]</a><span class="k">def</span> <span class="nf">get_all_ids_for_prov_document</span><span class="p">(</span><span class="n">document</span><span class="p">):</span>
@@ -1388,8 +1388,8 @@
     <span class="n">ids</span> <span class="o">=</span> <span class="n">_get_ids_from_bundle</span><span class="p">(</span><span class="n">document</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">bundle</span> <span class="ow">in</span> <span class="n">document</span><span class="o">.</span><span class="n">bundles</span><span class="p">:</span>
         <span class="n">ids</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">_get_ids_from_bundle</span><span class="p">(</span><span class="n">bundle</span><span class="p">))</span>
-
-    <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">ids</span><span class="p">))</span></div>
+</div>
+    <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">ids</span><span class="p">))</span>
 
 
 <span class="k">def</span> <span class="nf">_get_ids_from_bundle</span><span class="p">(</span><span class="n">bundle</span><span class="p">):</span>
@@ -1411,8 +1411,8 @@
 <span class="sd">    (&quot;BW&quot;, &quot;ALTM&quot;, &quot;00&quot;, &quot;EHE&quot;)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">tag</span> <span class="o">=</span> <span class="n">tag</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[:</span><span class="mi">4</span><span class="p">]</span>
-    <span class="n">tag</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">tag</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;__&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="k">return</span> <span class="n">tag</span></div>
+    <span class="n">tag</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">tag</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;__&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span></div>
+    <span class="k">return</span> <span class="n">tag</span>
 
 
 <div class="viewcode-block" id="wf_name2tag"><a class="viewcode-back" href="../../utils.html#pyasdf.utils.wf_name2tag">[docs]</a><span class="k">def</span> <span class="nf">wf_name2tag</span><span class="p">(</span><span class="n">tag</span><span class="p">):</span>
@@ -1421,8 +1421,8 @@
 
 <span class="sd">    &gt;&gt;&gt; wf_name2seed_codes(&quot;BW.ALTM.00.EHE__2012-01-..__2012_01-...__synth&quot;)</span>
 <span class="sd">    &quot;synth&quot;</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">tag</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;__&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span></div>
+<span class="sd">    &quot;&quot;&quot;</span></div>
+    <span class="k">return</span> <span class="n">tag</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;__&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 
 
 <div class="viewcode-block" id="label2string"><a class="viewcode-back" href="../../utils.html#pyasdf.utils.label2string">[docs]</a><span class="k">def</span> <span class="nf">label2string</span><span class="p">(</span><span class="n">labels</span><span class="p">):</span>
@@ -1435,15 +1435,15 @@
                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
                     <span class="s2">&quot;The labels must not contain a comma as it is used &quot;</span>
                     <span class="s2">&quot;as the separator for the different values.&quot;</span><span class="p">)</span>
-        <span class="n">labels</span> <span class="o">=</span> <span class="sa">u</span><span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">_i</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">_i</span> <span class="ow">in</span> <span class="n">labels</span><span class="p">])</span>
-    <span class="k">return</span> <span class="n">labels</span></div>
+        <span class="n">labels</span> <span class="o">=</span> <span class="sa">u</span><span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">_i</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">_i</span> <span class="ow">in</span> <span class="n">labels</span><span class="p">])</span></div>
+    <span class="k">return</span> <span class="n">labels</span>
 
 
 <div class="viewcode-block" id="labelstring2list"><a class="viewcode-back" href="../../utils.html#pyasdf.utils.labelstring2list">[docs]</a><span class="k">def</span> <span class="nf">labelstring2list</span><span class="p">(</span><span class="n">labels</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    String to a list of labels.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="p">[</span><span class="n">_i</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">_i</span> <span class="ow">in</span> <span class="n">labels</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)]</span></div>
+<span class="sd">    &quot;&quot;&quot;</span></div>
+    <span class="k">return</span> <span class="p">[</span><span class="n">_i</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">_i</span> <span class="ow">in</span> <span class="n">labels</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)]</span>
 
 
 <div class="viewcode-block" id="is_list"><a class="viewcode-back" href="../../utils.html#pyasdf.utils.is_list">[docs]</a><span class="k">def</span> <span class="nf">is_list</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
@@ -1452,8 +1452,8 @@
 
 <span class="sd">    :param obj: The object to test.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">collections</span><span class="o">.</span><span class="n">Iterable</span><span class="p">)</span> <span class="ow">and</span> \
-        <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">string_types</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">collections</span><span class="o">.</span><span class="n">Iterable</span><span class="p">)</span> <span class="ow">and</span> \</div>
+        <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">string_types</span><span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">to_list_of_resource_identifiers</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">obj_type</span><span class="p">):</span>

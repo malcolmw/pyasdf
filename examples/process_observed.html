@@ -161,16 +161,16 @@ sets, each processed in a different frequency band.</p>
 your machine supports it. Please keep in mind that there is a significant
 start-up cost for Python on each core (special Python versions that get around
 that if really necessary are in existence) so don’t use too many cores.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ mpirun -n <span class="m">64</span> python process_observed.py
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ mpirun -n <span class="m">64</span> python process_observed.py
 </pre></div>
 </div>
-<p>If you don’t run it with MPI with will utilize Python’s <code class="docutils literal"><span class="pre">multiprocessing</span></code>
+<p>If you don’t run it with MPI with will utilize Python’s <code class="docutils literal notranslate"><span class="pre">multiprocessing</span></code>
 module and run it on each of the machines cores. I/O is not parallel and
 uses a round-robin scheme where only one core writes at single point in time.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ python process_observed.py
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ python process_observed.py
 </pre></div>
 </div>
-<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4

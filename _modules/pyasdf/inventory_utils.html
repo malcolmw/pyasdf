@@ -182,8 +182,8 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">inv</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">inv_a</span><span class="p">)</span>
     <span class="n">inv</span><span class="o">.</span><span class="n">networks</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">inv_b</span><span class="o">.</span><span class="n">networks</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">isolate_and_merge_station</span><span class="p">(</span><span class="n">inv</span><span class="p">,</span> <span class="n">network_id</span><span class="o">=</span><span class="n">network_id</span><span class="p">,</span>
-                                     <span class="n">station_id</span><span class="o">=</span><span class="n">station_id</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">isolate_and_merge_station</span><span class="p">(</span><span class="n">inv</span><span class="p">,</span> <span class="n">network_id</span><span class="o">=</span><span class="n">network_id</span><span class="p">,</span></div>
+                                     <span class="n">station_id</span><span class="o">=</span><span class="n">station_id</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="isolate_and_merge_station"><a class="viewcode-back" href="../../inventory_utils.html#pyasdf.inventory_utils.isolate_and_merge_station">[docs]</a><span class="k">def</span> <span class="nf">isolate_and_merge_station</span><span class="p">(</span><span class="n">inv</span><span class="p">,</span> <span class="n">network_id</span><span class="p">,</span> <span class="n">station_id</span><span class="p">):</span>
@@ -301,8 +301,8 @@
     <span class="c1"># Update the selected number of stations and channels.</span>
     <span class="n">inv</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">selected_number_of_stations</span> <span class="o">=</span> <span class="mi">1</span>
     <span class="n">inv</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">selected_number_of_channels</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">inv</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">channels</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">inv</span></div>
+</div>
+    <span class="k">return</span> <span class="n">inv</span>
 
 
 <div class="viewcode-block" id="get_coordinates"><a class="viewcode-back" href="../../inventory_utils.html#pyasdf.inventory_utils.get_coordinates">[docs]</a><span class="k">def</span> <span class="nf">get_coordinates</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="s2">&quot;station&quot;</span><span class="p">):</span>
@@ -400,8 +400,8 @@
             <span class="k">elif</span> <span class="n">elem</span><span class="o">.</span><span class="n">tag</span> <span class="o">==</span> <span class="n">network_tag</span><span class="p">:</span>
                 <span class="n">net_state</span> <span class="o">=</span> <span class="n">elem</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;code&#39;</span><span class="p">)</span>
         <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="n">coordinates</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Level must be either &#39;station&#39; or &#39;channel&#39;.&quot;</span><span class="p">)</span></div>
+    <span class="k">else</span><span class="p">:</span></div>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Level must be either &#39;station&#39; or &#39;channel&#39;.&quot;</span><span class="p">)</span>
 </pre></div>
 
            </div>

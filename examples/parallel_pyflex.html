@@ -155,15 +155,15 @@
             
   <div class="section" id="running-pyflex-in-parallel">
 <h1>Running pyflex in Parallel<a class="headerlink" href="#running-pyflex-in-parallel" title="Permalink to this headline">¶</a></h1>
-<p><code class="docutils literal"><span class="pre">pyasdf</span></code> can be used to run a function across the data from two ASDF data
+<p><code class="docutils literal notranslate"><span class="pre">pyasdf</span></code> can be used to run a function across the data from two ASDF data
 sets. In most cases it will be some kind of misfit or comparision function.
 This example runs <a class="reference external" href="http://krischer.github.io/pyflex/">pyflex</a> to pick
 windows given a data set of observed and another data set of synthetic data.</p>
 <p>It can only be run with MPI:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ mpirun -n <span class="m">16</span> python parallel_pyflex.py
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ mpirun -n <span class="m">16</span> python parallel_pyflex.py
 </pre></div>
 </div>
-<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4

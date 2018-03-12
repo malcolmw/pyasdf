@@ -169,32 +169,32 @@ to ASDF files as written in the tutorial: <a class="reference internal" href="tu
 <p>As this is a common use case we ship a utility for this. Note that this is
 not a silver bullet and it cannot cover all cases, so please check your data
 afterwards.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ python -m pyasdf.scripts.sac2asdf folder_with_sac_files out.h5 synthetics
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ python -m pyasdf.scripts.sac2asdf folder_with_sac_files out.h5 synthetics
 </pre></div>
 </div>
 <p>This will search (not recursively) for all SAC files in
-<code class="docutils literal"><span class="pre">folder_with_sac_files</span></code> and write them to the <cite>out.h5</cite> ASDF file. All
+<code class="docutils literal notranslate"><span class="pre">folder_with_sac_files</span></code> and write them to the <cite>out.h5</cite> ASDF file. All
 waveforms will (in this case) have the tag <cite>synthetics</cite>.</p>
 <p>It will honor the following SAC header fields and convert them to corresponding
 StationXML and QuakeML documents:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">evla</span></code></li>
-<li><code class="docutils literal"><span class="pre">evlo</span></code></li>
-<li><code class="docutils literal"><span class="pre">evdp</span></code></li>
-<li><code class="docutils literal"><span class="pre">o</span></code></li>
-<li><code class="docutils literal"><span class="pre">stla</span></code></li>
-<li><code class="docutils literal"><span class="pre">stlo</span></code></li>
-<li><code class="docutils literal"><span class="pre">stel</span></code></li>
-<li><code class="docutils literal"><span class="pre">stdp</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">evla</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">evlo</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">evdp</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">o</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">stla</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">stlo</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">stel</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">stdp</span></code></li>
 </ul>
 <p>The waveforms will be correctly linked to the corresponding QuakeML files
 with ASDF’s internal reference system. Please see the help of the script for
 more details.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ python -m pyasdf.scripts.sac2asdf --help
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ python -m pyasdf.scripts.sac2asdf --help
 </pre></div>
 </div>
 <p>The file can then be read as follows:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyasdf</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyasdf</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ds</span> <span class="o">=</span> <span class="n">pyasdf</span><span class="o">.</span><span class="n">ASDFDataSet</span><span class="p">(</span><span class="s2">&quot;./out.h5&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ds</span>
 <span class="go">ASDF file [format version: 1.0.0]: &#39;out.h5&#39; (615.1 MB)</span>
