@@ -818,11 +818,13 @@ class ASDFDataSet(object):
                     self.single_item_read_limit_in_mb))
             raise ASDFValueError(msg)
 
-        tr = self.__extract_waveform(waveform_name, idx_start, idx_end)
+        tr = self.__extract_waveform(waveform_name,
+                                     idx_start=idx_start,
+                                     idx_end=idx_end)
 
         return(tr)
 
-    def __extract_waveform(self, waveform_name, idx_start, idx_end):
+    def __extract_waveform(self, waveform_name, idx_start=None, idx_end=None):
 
         network, station, location, channel = waveform_name.split(".")[:4]
         channel = channel[:channel.find("__")]
@@ -1573,8 +1575,8 @@ class ASDFDataSet(object):
                         waveform_name = _ref.attrs["waveform_name"]
                         idx_start, idx_end = _ref[:]
                         _tr = self.__extract_waveform(waveform_name,
-                                                   idx_start,
-                                                   idx_end)
+                                                     idx_start=idx_start,
+                                                     idx_end=idx_end)
                         _st.append(_tr)
         return(_st)
 
